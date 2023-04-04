@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Внедорожники</title>
+</head>
+<body>
+
+<h1>Внедорожники</h1>
+<br/>
+<div>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Цена от</th>
+        </tr>
+        <tr th:each="car : ${carList}">
+            <td th:utext="${car.getBrand}">VALUE</td>
+            <td th:utext="${car.getModel}">VALUE</td>
+            <td th:utext="${car.getPrice}">VALUE</td>
+        </tr>
+    </table>
+
+    <br/><br/>
+
+    <a href="/cars">.../cars</a>
+    <br/><br/>
+    <a href="/cars?n=1">.../cars?n=1</a>
+    <br/><br/>
+    <a href="/cars?n=2">.../cars?n=2</a>
+    <br/><br/>
+    <a href="/cars?n=3">.../cars?n=3</a>
+    <br/><br/>
+    <a href="/cars?n=4">.../cars?n=4</a>
+    <br/><br/>
+    <a href="/cars?n=5">.../cars?n=5</a>
+    <br/><br/>
+    <a href="/cars?n=6">.../cars?n=6</a>
+    <br/><br/>
+    <a href="/cars?n=100">.../cars?n=100</a>
+    <br/><br/>
+
+</div>
+
+
+</body>
+</html>
