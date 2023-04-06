@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.service.CarServiceImpl;
 
+import javax.xml.bind.JAXBException;
+
 @Controller
 @RequestMapping("/cars")
 public class CarsController {
 
-    private CarServiceImpl carService;
+    private final CarServiceImpl carService;
 
     @Autowired
     public CarsController(CarServiceImpl carService) {
@@ -20,7 +22,7 @@ public class CarsController {
     }
 
     @GetMapping()
-    public String getCars(@RequestParam(value = "n", required = false) Integer quantity, Model model) {
+    public String getCars(@RequestParam(value = "n", required = false) Integer quantity, Model model) throws JAXBException {
         model.addAttribute("carList", carService.getCars(quantity));
         return "cars";
     }
