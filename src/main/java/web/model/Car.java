@@ -1,11 +1,19 @@
 package web.model;
 
-import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "car")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Car {
     private String brand;
     private String model;
     private int price;
+
+    public Car() {
+    }
 
     public Car(String Brand, String model, int price) {
         this.brand = Brand;
@@ -35,5 +43,14 @@ public class Car {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
