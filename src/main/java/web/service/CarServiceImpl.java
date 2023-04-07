@@ -2,28 +2,22 @@ package web.service;
 
 import org.springframework.stereotype.Service;
 import web.model.Car;
-import web.model.Cars;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements CarService {
 
-    private static List<Car> carList;
-    {
-        Cars cars;
-        try {
-            cars = (Cars) JAXBContext.newInstance(Cars.class).createUnmarshaller().unmarshal(
-                    getClass().getClassLoader().getResourceAsStream("carList.xml"));
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        }
-        carList = cars.getCarList();
-
-        System.out.println("parsing xml");
+    private static final List<Car> carList;
+    static {
+        carList = new ArrayList<>();
+        carList.add(new Car("Mitsubishi", "Pajero Sport", 2900000));
+        carList.add(new Car("Land Rover", "Discovery", 6000000));
+        carList.add(new Car("УАЗ", "Patriot", 1100000));
+        carList.add(new Car("Renault", "Duster", 1100000));
+        carList.add(new Car("Toyota", "RAV4", 2200000));
     }
 
     public List<Car> getCars(Integer quantity) {
